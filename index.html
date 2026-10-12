@@ -182,5 +182,39 @@ document.getElementById("share").addEventListener("click",async()=>{
   }
 });
 </script>
+<div style="text-align:center;padding:24px;background:#111;color:#c9a45c;border:1px solid #c9a45c;border-radius:12px;margin:20px 0">
+  <div>TOPLAM GELEN BITCOIN</div>
+  <div id="btc-total" style="font-size:30px;font-weight:bold;margin:12px 0">Yükleniyor...</div>
+  <small id="btc-update" style="color:#aaa">Ağ kontrol ediliyor</small>
+</div>
+<script>
+async function updateBTC() {
+  const address = "15JkV4rgUuehSTKhFjAfhj7uCHSMcPQzxq";
+  try {
+    const r = await fetch(
+      "https://mempool.space/api/address/" + address
+    );
+    if (!r.ok) throw new Error("API error");
+    const d = await r.json();
+    const confirmed =
+      d.chain_stats.funded_txo_sum -
+      d.chain_stats.spent_txo_sum;
+    const pending =
+      d.mempool_stats.funded_txo_sum -
+      d.mempool_stats.spent_txo_sum;
+    const total = (confirmed + pending) / 100000000;
+    document.getElementById("btc-total").textContent =
+      total.toFixed(8) + " BTC";
+    document.getElementById("btc-update").textContent =
+      "Son güncelleme: " + new Date().toLocaleTimeString();
+  } catch {
+    document.getElementById("btc-update").textContent =
+      "Veri alınamadı, tekrar denenecek.";
+  }
+}
+updateBTC();
+setInterval(updateBTC, 30000);
+</script>
+
 </body>
 </html>
