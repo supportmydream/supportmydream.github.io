@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080808">
 <title>Support My Dream | Bitcoin</title>
+
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -52,8 +52,29 @@ button{width:100%;font-size:13px;font-weight:bold}
 .thanks{text-align:center;padding:65px 20px;background:linear-gradient(#080808cc,#080808ed),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=80') center/cover}
 .thanks p{color:var(--muted)}
 footer{padding:25px 7%;border-top:1px solid #292929;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#aaa;font-size:11px}
+
+/* LIVE BITCOIN GOAL PANEL */
+.progress-section{padding:35px 5% 65px;max-width:900px;margin:auto}
+.progress-card{background:linear-gradient(145deg,#191713,#090909);border:1px solid #8d611f;border-radius:16px;padding:clamp(22px,5vw,42px);box-shadow:0 15px 50px #0008}
+.progress-top{text-align:center}
+.progress-top .eyebrow{margin-bottom:12px}
+.progress-top h2{margin:10px 0;font-size:clamp(28px,5vw,44px)}
+.progress-description{color:#bbb;line-height:1.7;font-size:14px;max-width:580px;margin:12px auto}
+.balance-label{font-size:11px;color:#c9a45c;letter-spacing:2px;margin-top:32px}
+.balance-value{font-size:clamp(30px,7vw,52px);font-weight:800;margin:10px 0;color:#fff;overflow-wrap:anywhere}
+.goal-line{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#cfcfcf;font-size:13px;margin:26px 0 12px}
+.goal-line strong{color:var(--gold)}
+.progress-track{height:18px;background:#303030;border:1px solid #454545;border-radius:30px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#b97813,#ffb52e,#ffe09a);border-radius:30px;transition:width .8s ease}
+.progress-percent{text-align:right;color:var(--gold);font-size:13px;font-weight:bold;margin-top:10px}
+.progress-message{text-align:center;color:#aaa;font-size:12px;line-height:1.7;margin-top:18px}
+.progress-address-label{font-size:11px;color:var(--gold);letter-spacing:1px;margin:30px 0 8px}
+.progress-address{background:#050505;border:1px solid #414141;border-radius:7px;padding:13px;font:12px/1.7 monospace;overflow-wrap:anywhere;text-align:left}
+.progress-card .btn{width:100%;margin-top:12px}
+.last-updated{font-size:11px;color:#888;text-align:center;margin-top:18px}
 @media(max-width:800px){
- header{padding:18px 5%}nav a{margin-left:10px;font-size:10px}
+ header{padding:18px 5%}
+ nav a{margin-left:10px;font-size:10px}
  .hero{min-height:570px;background-position:58% center}
  .hero-content{padding:55px 6%}
  section.content{padding:48px 5%}
@@ -61,9 +82,14 @@ footer{padding:25px 7%;border-top:1px solid #292929;display:flex;justify-content
  .gallery{grid-template-columns:1fr 1fr}
  .photo{height:220px}
 }
-@media(max-width:400px){nav a{margin-left:7px}.logo{font-size:12px}.photo{height:185px}}
+@media(max-width:400px){
+ nav a{margin-left:7px}
+ .logo{font-size:12px}
+ .photo{height:185px}
+}
 </style>
 </head>
+
 <body>
 <header>
   <div class="logo"><span>₿</span> SUPPORT MY DREAM</div>
@@ -114,6 +140,7 @@ footer{padding:25px 7%;border-top:1px solid #292929;display:flex;justify-content
   </div>
 </section>
 
+<!-- Car and motorcycle gallery -->
 <div class="gallery">
   <div class="photo">
     <img loading="lazy" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=85" alt="Luxury sports car">
@@ -128,10 +155,52 @@ footer{padding:25px 7%;border-top:1px solid #292929;display:flex;justify-content
     <div class="caption"><small>THE DREAM</small><strong>A vision for the future.</strong></div>
   </div>
   <div class="photo">
-    <img loading="lazy" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=85" alt="Mountain road scenery">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=85" alt="Mountain scenery">
     <div class="caption"><small>THE JOURNEY</small><strong>More to come.</strong></div>
   </div>
 </div>
+
+<!-- Live Bitcoin balance and 13 BTC goal -->
+<section class="progress-section" id="progress">
+  <div class="progress-card">
+    <div class="progress-top">
+      <div class="eyebrow">Support the dream</div>
+      <h2>Help Make It <span class="gold">Happen.</span></h2>
+      <p class="progress-description">Every contribution brings the dream one step closer. Follow the live wallet balance and progress toward the 13 BTC goal.</p>
+    </div>
+
+    <div class="balance-label">CURRENT WALLET BALANCE</div>
+    <div class="balance-value" id="btc-total">Loading...</div>
+
+    <div class="goal-line">
+      <span>Progress toward goal</span>
+      <span><strong>13 BTC</strong> goal</span>
+    </div>
+
+    <div
+      class="progress-track"
+      role="progressbar"
+      aria-label="Bitcoin goal progress"
+      aria-valuemin="0"
+      aria-valuemax="13"
+      aria-valuenow="0"
+      id="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="progress-percent" id="progress-percent">Calculating progress...</div>
+
+    <div class="progress-message">
+      Your support is voluntary. Thank you for being part of the journey.
+    </div>
+
+    <div class="progress-address-label">SEND BITCOIN TO THIS ADDRESS</div>
+    <div class="progress-address" id="progress-address">15JkV4rgUuehSTKhFjAfhj7uCHSMcPQzxq</div>
+    <button class="btn" id="copy-progress">₿ &nbsp; Copy Donation Address</button>
+
+    <div class="last-updated" id="btc-update">Connecting to the Bitcoin network...</div>
+  </div>
+</section>
 
 <section class="thanks">
   <h2>Thank you for being part of the journey.</h2>
@@ -145,73 +214,129 @@ footer{padding:25px 7%;border-top:1px solid #292929;display:flex;justify-content
 
 <script>
 const address = "15JkV4rgUuehSTKhFjAfhj7uCHSMcPQzxq";
+const goalBTC = 13;
 
-async function copyAddress(){
-  try{
-    await navigator.clipboard.writeText(address);
-    document.getElementById("copy").textContent = "✓ Address Copied!";
-  }catch(e){
+async function copyText(text, button, defaultText, successText) {
+  try {
+    await navigator.clipboard.writeText(text);
+    button.textContent = successText;
+  } catch (e) {
     const box = document.createElement("textarea");
-    box.value = address;
+    box.value = text;
     document.body.appendChild(box);
     box.select();
     const ok = document.execCommand("copy");
     box.remove();
-    document.getElementById("copy").textContent = ok ? "✓ Address Copied!" : "Copy the address above";
+    button.textContent = ok ? successText : text;
   }
-  setTimeout(()=>document.getElementById("copy").textContent="▣  Copy Bitcoin Address",2200);
+
+  setTimeout(() => {
+    button.textContent = defaultText;
+  }, 2200);
 }
-document.getElementById("copy").addEventListener("click",copyAddress);
 
-document.getElementById("qrButton").addEventListener("click",()=>{
-  const qr=document.getElementById("qr");
-  const show=getComputedStyle(qr).display==="none";
-  qr.style.display=show?"block":"none";
-  document.getElementById("qrButton").textContent=show?"Hide QR Code":"▦  Show QR Code";
+document.getElementById("copy").addEventListener("click", () => {
+  copyText(
+    address,
+    document.getElementById("copy"),
+    "▣  Copy Bitcoin Address",
+    "✓ Address Copied!"
+  );
 });
 
-document.getElementById("share").addEventListener("click",async()=>{
-  if(navigator.share){
-    try{await navigator.share({title:"Support My Dream",text:"Visit my personal Bitcoin support page.",url:location.href})}catch(e){}
-  }else{
-    try{
-      await navigator.clipboard.writeText(location.href);
-      document.getElementById("share").textContent="✓ Page Link Copied!";
-    }catch(e){window.prompt("Copy this page link:",location.href)}
-    setTimeout(()=>document.getElementById("share").textContent="↗  Share This Page",2200);
-  }
+document.getElementById("copy-progress").addEventListener("click", () => {
+  copyText(
+    address,
+    document.getElementById("copy-progress"),
+    "₿  Copy Donation Address",
+    "✓ Address Copied!"
+  );
 });
-</script>
-<div style="text-align:center;padding:24px;background:#111;color:#c9a45c;border:1px solid #c9a45c;border-radius:12px;margin:20px 0">
-  <div>TOTAL BITCOIN RECEIVED</div>
-  <div id="btc-total" style="font-size:30px;font-weight:bold;margin:12px 0">Yükleniyor...</div>
-  <small id="btc-update" style="color:#aaa">Ağ kontrol ediliyor</small>
-</div>
-<script>
-async function updateBTC() {
-  const address = "15JkV4rgUuehSTKhFjAfhj7uCHSMcPQzxq";
-  try {
-    const r = await fetch(
-      "https://mempool.space/api/address/" + address
+
+document.getElementById("qrButton").addEventListener("click", () => {
+  const qr = document.getElementById("qr");
+  const show = getComputedStyle(qr).display === "none";
+  qr.style.display = show ? "block" : "none";
+  document.getElementById("qrButton").textContent =
+    show ? "Hide QR Code" : "▦  Show QR Code";
+});
+
+document.getElementById("share").addEventListener("click", async () => {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Support My Dream",
+        text: "Visit my personal Bitcoin support page.",
+        url: location.href
+      });
+    } catch (e) {}
+  } else {
+    await copyText(
+      location.href,
+      document.getElementById("share"),
+      "↗  Share This Page",
+      "✓ Page Link Copied!"
     );
-    if (!r.ok) throw new Error("API error");
-    const d = await r.json();
+  }
+});
+
+async function updateBTC() {
+  const balanceElement = document.getElementById("btc-total");
+  const updateElement = document.getElementById("btc-update");
+  const fill = document.getElementById("progress-fill");
+  const percentElement = document.getElementById("progress-percent");
+  const track = document.getElementById("progress-track");
+
+  try {
+    const response = await fetch(
+      "https://mempool.space/api/address/" + address,
+      { cache: "no-store" }
+    );
+
+    if (!response.ok) {
+      throw new Error("Unable to retrieve wallet data");
+    }
+
+    const data = await response.json();
+
     const confirmed =
-      d.chain_stats.funded_txo_sum -
-      d.chain_stats.spent_txo_sum;
+      data.chain_stats.funded_txo_sum -
+      data.chain_stats.spent_txo_sum;
+
     const pending =
-      d.mempool_stats.funded_txo_sum -
-      d.mempool_stats.spent_txo_sum;
-    const total = (confirmed + pending) / 100000000;
-    document.getElementById("btc-total").textContent =
-      total.toFixed(8) + " BTC";
-    document.getElementById("btc-update").textContent =
-      "Son güncelleme: " + new Date().toLocaleTimeString();
-  } catch {
-    document.getElementById("btc-update").textContent =
-      "Veri alınamadı, tekrar denenecek.";
+      data.mempool_stats.funded_txo_sum -
+      data.mempool_stats.spent_txo_sum;
+
+    const satoshis = confirmed + pending;
+    const balanceBTC = satoshis / 100000000;
+
+    // Display the actual current net wallet balance.
+    balanceElement.textContent = balanceBTC.toFixed(8) + " BTC";
+
+    // Calculate progress against the fixed 13 BTC goal.
+    const percent = Math.min(
+      100,
+      Math.max(0, (balanceBTC / goalBTC) * 100)
+    );
+
+    fill.style.width = percent + "%";
+    percentElement.textContent = percent.toFixed(4) + "% of goal reached";
+    track.setAttribute("aria-valuenow", Math.min(goalBTC, balanceBTC).toString());
+
+    updateElement.textContent =
+      "Live wallet data · Last updated " +
+      new Date().toLocaleTimeString();
+
+  } catch (error) {
+    if (balanceElement.textContent === "Loading...") {
+      balanceElement.textContent = "Temporarily unavailable";
+    }
+
+    updateElement.textContent =
+      "Unable to load live data. Retrying automatically.";
   }
 }
+
 updateBTC();
 setInterval(updateBTC, 30000);
 </script>
