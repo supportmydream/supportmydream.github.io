@@ -3,117 +3,184 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090b10">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
 <title>Support My Dream | Bitcoin</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;padding:24px;
- display:flex;align-items:center;justify-content:center;
- background:radial-gradient(ellipse at top,#202a3b 0%,#090b10 65%);
- color:#f5f7fb;font-family:Arial,sans-serif
+html{scroll-behavior:smooth}
+body{margin:0;background:#080808;color:#fff;font-family:Arial,Helvetica,sans-serif}
+:root{--gold:#ffb52e;--muted:#bdbdbd}
+header{padding:20px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #29251d}
+.logo{font-weight:900;letter-spacing:1.5px}
+.logo span{color:var(--gold)}
+nav a{color:#ddd;text-decoration:none;margin-left:22px;font-size:12px}
+nav a:hover{color:var(--gold)}
+.hero{min-height:590px;display:flex;align-items:center;position:relative;background:linear-gradient(90deg,#050505 0%,#050505e8 32%,#05050545 100%),url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat}
+.hero-content{padding:70px 7%;max-width:700px}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:bold;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(48px,8vw,88px);line-height:.98;letter-spacing:-3px;margin:22px 0}
+.gold{color:var(--gold)}
+.hero p,.intro{color:#d0d0d0;line-height:1.8;font-size:16px;max-width:480px}
+.btn{display:inline-block;padding:15px 22px;background:var(--gold);color:#111;font-weight:bold;text-decoration:none;border:0;border-radius:5px;cursor:pointer;margin-top:15px}
+.btn:hover{filter:brightness(1.1)}
+section.content{padding:65px 7%;max-width:1300px;margin:auto}
+h2{font-size:clamp(30px,4vw,46px);margin:12px 0 20px}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:start}
+.points{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+.point{border-top:1px solid #333;padding-top:16px;color:var(--muted);font-size:13px;line-height:1.6}
+.point strong{display:block;color:white;margin-bottom:7px}
+.card{background:linear-gradient(145deg,#171717,#0b0b0b);border:1px solid #8d611f;border-radius:14px;padding:27px}
+.card h3{font-size:22px;margin:0 0 8px}
+.card p{color:var(--muted);font-size:13px;line-height:1.6}
+.wallet-label{font-size:11px;color:var(--gold);letter-spacing:1px;margin:23px 0 8px}
+.wallet{background:#050505;border:1px solid #444;padding:13px;border-radius:6px;font:12px/1.6 monospace;overflow-wrap:anywhere}
+button{width:100%;font-size:13px;font-weight:bold}
+.card .btn{width:100%;margin-top:12px}
+.outline{background:transparent;border:1px solid var(--gold);color:white}
+#qr{display:none;background:white;padding:15px;border-radius:8px;margin-top:14px;text-align:center;color:#111}
+#qr img{width:190px;height:190px;max-width:100%}
+#qr p{color:#333}
+.notice{font-size:10px!important;line-height:1.8!important;border-top:1px solid #333;padding-top:15px;margin-top:20px}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.photo{position:relative;height:270px;overflow:hidden;background:#111}
+.photo img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:transform .4s}
+.photo:hover img{transform:scale(1.06)}
+.caption{position:absolute;bottom:0;left:0;right:0;padding:20px 14px;background:linear-gradient(transparent,#000)}
+.caption small{color:var(--gold);letter-spacing:2px;font-weight:bold}
+.caption strong{display:block;margin-top:8px}
+.thanks{text-align:center;padding:65px 20px;background:linear-gradient(#080808cc,#080808ed),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=80') center/cover}
+.thanks p{color:var(--muted)}
+footer{padding:25px 7%;border-top:1px solid #292929;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#aaa;font-size:11px}
+@media(max-width:800px){
+ header{padding:18px 5%}nav a{margin-left:10px;font-size:10px}
+ .hero{min-height:570px;background-position:58% center}
+ .hero-content{padding:55px 6%}
+ section.content{padding:48px 5%}
+ .columns{grid-template-columns:1fr;gap:30px}
+ .gallery{grid-template-columns:1fr 1fr}
+ .photo{height:220px}
 }
-.card{
- width:100%;max-width:440px;padding:34px 25px;
- text-align:center;border:1px solid #303847;border-radius:25px;
- background:rgba(17,21,30,.94);
- box-shadow:0 25px 80px #0008
-}
-.logo{
- width:78px;height:78px;margin:0 auto 20px;border-radius:50%;
- display:flex;align-items:center;justify-content:center;
- background:#f7931a;color:#111;font-size:47px;font-weight:bold;
- box-shadow:0 0 35px #f7931a35
-}
-.tag{font-size:11px;letter-spacing:3px;color:#f7931a;font-weight:bold}
-h1{font-size:29px;margin:13px 0 12px}
-p{color:#aeb7c7;font-size:14px;line-height:1.7}
-.amount{
- margin:25px 0 20px;padding:17px;border-radius:15px;
- background:#0b0e14;border:1px solid #292f3b
-}
-.amount strong{display:block;color:#f7931a;font-size:17px;margin-bottom:6px}
-.address{
- overflow-wrap:anywhere;background:#0b0e14;border:1px solid #343b49;
- border-radius:12px;padding:15px;font-size:12px;line-height:1.8;color:#fff;
- user-select:all
-}
-button{
- width:100%;padding:15px;margin-top:13px;border:0;border-radius:12px;
- background:#f7931a;color:#111;font-size:15px;font-weight:bold;
- cursor:pointer
-}
-button:active{transform:scale(.98)}
-.secondary{background:#242b38;color:#fff}
-#status{min-height:20px;color:#f7931a;font-size:12px;margin-top:10px}
-.note{font-size:11px;color:#778195;margin-top:22px}
-footer{font-size:10px;color:#667084;margin-top:25px;letter-spacing:1px}
+@media(max-width:400px){nav a{margin-left:7px}.logo{font-size:12px}.photo{height:185px}}
 </style>
 </head>
 <body>
-<main class="card">
-  <div class="logo">₿</div>
-  <div class="tag">A PERSONAL DREAM</div>
-  <h1>Be Part of the Journey</h1>
-  <p>
-    Every bit of support makes a difference.
-    If you'd like to support my journey, you can send Bitcoin
-    directly to the address below. Thank you for being here.
-  </p>
+<header>
+  <div class="logo"><span>₿</span> SUPPORT MY DREAM</div>
+  <nav>
+    <a href="#home">HOME</a>
+    <a href="#dream">MY DREAM</a>
+    <a href="#bitcoin">BITCOIN</a>
+  </nav>
+</header>
 
-  <div class="amount">
-    <strong>₿ BITCOIN SUPPORT</strong>
-    <span style="font-size:12px;color:#929daf">Direct wallet transfer</span>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">Turn dreams into reality</div>
+    <h1>Support My<br><span class="gold">Dream.</span></h1>
+    <p>Every journey begins with a dream. I'm working toward a future filled with freedom, travel and new experiences. If my dream inspires you, your voluntary support is appreciated.</p>
+    <a class="btn" href="#bitcoin">₿ &nbsp; SUPPORT MY DREAM</a>
   </div>
+</section>
 
-  <div class="address" id="btcAddress">15JkV4rgUuehSTKhFjAfhj7uCHSMcPQzxq</div>
+<section class="content" id="dream">
+  <div class="columns">
+    <div>
+      <div class="eyebrow">My dream</div>
+      <h2>A bigger future.<br><span class="gold">One step at a time.</span></h2>
+      <p class="intro">This page is a personal way to share my goals with people who believe in dreams and new possibilities. Every contribution is voluntary. If you can't contribute, sharing this page also helps.</p>
+      <div class="points">
+        <div class="point"><strong>✦ More freedom</strong>Work toward new opportunities and experiences.</div>
+        <div class="point"><strong>✦ More adventures</strong>Discover new roads and places.</div>
+        <div class="point"><strong>✦ Your choice</strong>Support only if you feel comfortable.</div>
+        <div class="point"><strong>✦ Share the journey</strong>Spread the word with friends.</div>
+      </div>
+    </div>
 
-  <button onclick="copyAddress()">COPY BITCOIN ADDRESS</button>
-  <button class="secondary" onclick="showQR()">SHOW QR CODE</button>
-  <div id="status"></div>
-  <div id="qr" style="display:none;margin-top:18px">
-    <img id="qrImage" alt="Bitcoin address QR code"
-      style="width:210px;height:210px;background:white;padding:10px;border-radius:12px;max-width:100%">
-    <p>Scan with your Bitcoin wallet.</p>
+    <div class="card" id="bitcoin">
+      <h3><span class="gold">₿</span> Support My Dream</h3>
+      <p>Send Bitcoin directly to the wallet below.</p>
+      <div class="wallet-label">BITCOIN WALLET ADDRESS</div>
+      <div class="wallet" id="wallet">15JkV4rgUuehSTKhFjAfhj7uCHSMcPQzxq</div>
+      <button class="btn" id="copy">▣ &nbsp; Copy Bitcoin Address</button>
+      <button class="btn outline" id="qrButton">▦ &nbsp; Show QR Code</button>
+      <div id="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&amp;data=15JkV4rgUuehSTKhFjAfhj7uCHSMcPQzxq" alt="Bitcoin wallet QR code">
+        <p>Scan with your Bitcoin wallet. Verify the address before sending.</p>
+      </div>
+      <button class="btn outline" id="share">↗ &nbsp; Share This Page</button>
+      <p class="notice">Please verify the wallet address and network before sending. Cryptocurrency transfers are generally irreversible. This is a personal support page, not a registered charity or an investment offer. No contribution or return is guaranteed.</p>
+    </div>
   </div>
+</section>
 
-  <div class="note">
-    Please verify the address before sending. Cryptocurrency
-    transactions are generally irreversible.
+<div class="gallery">
+  <div class="photo">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=85" alt="Luxury sports car">
+    <div class="caption"><small>THE CAR</small><strong>Style. Power. Freedom.</strong></div>
   </div>
-  <footer>THANK YOU FOR YOUR SUPPORT · ₿</footer>
-</main>
+  <div class="photo">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=85" alt="Motorcycle">
+    <div class="caption"><small>THE MOTORCYCLE</small><strong>Adventure awaits.</strong></div>
+  </div>
+  <div class="photo">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=85" alt="Premium car">
+    <div class="caption"><small>THE DREAM</small><strong>A vision for the future.</strong></div>
+  </div>
+  <div class="photo">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=85" alt="Mountain road scenery">
+    <div class="caption"><small>THE JOURNEY</small><strong>More to come.</strong></div>
+  </div>
+</div>
+
+<section class="thanks">
+  <h2>Thank you for being part of the journey.</h2>
+  <p>Built with honesty. Supported by choice. <span class="gold">₿</span></p>
+</section>
+
+<footer>
+  <span>supportmydream.github.io</span>
+  <span>Personal page · Voluntary support only</span>
+</footer>
 
 <script>
 const address = "15JkV4rgUuehSTKhFjAfhj7uCHSMcPQzxq";
 
 async function copyAddress(){
-  const status = document.getElementById("status");
-  try {
+  try{
     await navigator.clipboard.writeText(address);
-    status.textContent = "Address copied successfully!";
-  } catch(e) {
-    const field = document.createElement("textarea");
-    field.value = address;
-    document.body.appendChild(field);
-    field.select();
-    document.execCommand("copy");
-    field.remove();
-    status.textContent = "Address copied!";
+    document.getElementById("copy").textContent = "✓ Address Copied!";
+  }catch(e){
+    const box = document.createElement("textarea");
+    box.value = address;
+    document.body.appendChild(box);
+    box.select();
+    const ok = document.execCommand("copy");
+    box.remove();
+    document.getElementById("copy").textContent = ok ? "✓ Address Copied!" : "Copy the address above";
   }
+  setTimeout(()=>document.getElementById("copy").textContent="▣  Copy Bitcoin Address",2200);
 }
+document.getElementById("copy").addEventListener("click",copyAddress);
 
-function showQR(){
-  const qr = document.getElementById("qr");
-  const opening = qr.style.display === "none";
-  qr.style.display = opening ? "block" : "none";
-  if(opening){
-    document.getElementById("qrImage").src =
-      "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
-      encodeURIComponent("bitcoin:" + address);
+document.getElementById("qrButton").addEventListener("click",()=>{
+  const qr=document.getElementById("qr");
+  const show=getComputedStyle(qr).display==="none";
+  qr.style.display=show?"block":"none";
+  document.getElementById("qrButton").textContent=show?"Hide QR Code":"▦  Show QR Code";
+});
+
+document.getElementById("share").addEventListener("click",async()=>{
+  if(navigator.share){
+    try{await navigator.share({title:"Support My Dream",text:"Visit my personal Bitcoin support page.",url:location.href})}catch(e){}
+  }else{
+    try{
+      await navigator.clipboard.writeText(location.href);
+      document.getElementById("share").textContent="✓ Page Link Copied!";
+    }catch(e){window.prompt("Copy this page link:",location.href)}
+    setTimeout(()=>document.getElementById("share").textContent="↗  Share This Page",2200);
   }
-}
+});
 </script>
 </body>
 </html>
